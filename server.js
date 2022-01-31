@@ -10,9 +10,11 @@ var users = [
 ]
 var context = {
     create: "użytkownik stworzony",
-    login: "zalogowany"
+    login: "zalogowany",
+    users: users
 }
 
+app.use(express.json());
 
 app.use(express.urlencoded({
     extended: true
@@ -84,6 +86,14 @@ app.get("/admin", function (req, res) {
     if (login == true) res.render('adminL.hbs')
     else res.render('admin.hbs');
 })
+
+app.get("/sort", function (req, res) {
+    console.log(context.users)
+    context.users = JSON.stringify(users);
+    res.render('sort.hbs', context);
+})
+
+
 app.listen(PORT, function () {
     console.log("start serwera na porcie " + PORT)
 })
