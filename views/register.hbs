@@ -1,13 +1,20 @@
+<header>
+    <a href="/">main</a>
+    <a href="/register">register</a>
+    <a href="/login">login</a>
+    <a href="/admin">admin</a>
+    <a href="/logout">{{logout}}</a>
+</header>
 <h1>Register page</h1>
 <form action="handlePost" method="post">
     <label for="login">login: </label>
-    <input type="text" name="login" id="login">
+    <input type="text" name="login" id="login" required>
     <label for="password">password: </label>
-    <input type="password" name="password" id="password">
+    <input type="password" name="password" id="password" required>
     <label for="age">wiek: </label>
-    <select name="age" id="age"></select>
+    <select name="age" id="age" required></select>
     <label for="student">uczen?: </label>
-    <input type="checkbox" name="student" id="student" value="true">
+    <input type="checkbox" name="student" id="student" value="checked">
     <label for="plec">płeć: </label>
     <input type="radio" name="plec" id="plecK" value="K">
     <label for="plecK">K</label>
@@ -23,7 +30,7 @@
 <script>
     option = "";
     for (i = 1; i <= 100; i++) {
-        option += '<option val=' + i + '>' + i + '</option>';
+        option += '<option value=' + i + '>' + i + '</option>';
         console.log(i)
     }
     document.getElementById("age").innerHTML = option

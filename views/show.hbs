@@ -10,4 +10,14 @@
     <a href="/gender">gender</a>
     <a href="/show">show</a>
 </div>
-<h1>admin page</h1>
+<table>
+    {{#each data}}
+    <tr>
+        <td>id: {{id}} </td>
+        <td>user: {{login}} - {{password}} </td>
+        <td>uczeń: <input type="checkbox" {{ student }} disabled> </td>
+        <td>wiek: {{age}} </td>
+        <td>płeć: {{plec}} </td>
+    </tr>
+    {{/each}}
+</table>

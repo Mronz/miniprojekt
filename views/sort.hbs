@@ -1,8 +1,25 @@
+<header>
+    <a href="/">main</a>
+    <a href="/register">register</a>
+    <a href="/login">login</a>
+    <a href="/admin">admin</a>
+    <a href="/logout">{{logout}}</a>
+</header>
 <div id="adminPanel">
     <a href="/sort">sort</a>
     <a href="/gender">gender</a>
     <a href="/show">show</a>
 </div>
-<div>
-    {{users}}
-</div>
+<form action="/sort" onchange="this.submit()">
+    <input type="radio" name="sort" id="ros" value="up"><label for="ros">rosnące</label>
+    <input type="radio" name="sort" id="mal" value="down"><label for="mal">malejące</label>
+</form>
+<table>
+    {{#each data}}
+    <tr>
+        <td>id: {{id}} </td>
+        <td>user: {{login}} - {{password}} </td>
+        <td>wiek: {{age}} </td>
+    </tr>
+    {{/each}}
+</table>
