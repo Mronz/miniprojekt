@@ -31,7 +31,6 @@ app.get("/register", function (req, res) {
     res.render('register.hbs');
 })
 app.post("/handlePost", function (req, res) {
-    console.log(req.body.login)
     var temp = 0;
     for (let i = 0; i < users.length; i++) {
         if (req.body.login == users[i].login) {
@@ -41,17 +40,12 @@ app.post("/handlePost", function (req, res) {
     if (temp == 0) {
         users.push(req.body)
         context.create = "użytkownik stworzony"
-
         res.render('register.hbs', context);
     }
     else {
         context.create = "użytkownik już istnieje"
         res.render('register.hbs', context)
     }
-
-
-    console.log(users);
-
 })
 
 app.get("/login", function (req, res) {
@@ -59,7 +53,6 @@ app.get("/login", function (req, res) {
 })
 
 app.post("/handlePostL", function (req, res) {
-
     var temp = -1;
     var status = false
     for (let i = 0; i < users.length; i++) {
@@ -77,7 +70,6 @@ app.post("/handlePostL", function (req, res) {
         context.login = "złe dane"
         res.render('login.hbs', context);
     }
-
     console.log(users);
 
 })
@@ -88,8 +80,20 @@ app.get("/admin", function (req, res) {
 })
 
 app.get("/sort", function (req, res) {
-    console.log(context.users)
-    context.users = JSON.stringify(users);
+    var sorted = `<table>`
+    for (let i = 0; i < users.length; i++) {
+        sorted += `<tr>
+        <td>`+ users[i].login + `</td>
+        <td>`+ users[i].password + `</td>
+        <td>`+ users[i].age + `</td>
+        <td>`+ users[i].student + `</td>
+        <td>`+ users[i].plec + `</td>
+        </tr>`
+    }
+    sorted += `</table>`
+    context.users = sorted;
+    console.log(sorted)
+    res.setHeader("content-type", "application/json")
     res.render('sort.hbs', context);
 })
 
