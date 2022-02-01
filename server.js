@@ -36,6 +36,7 @@ app.post("/handlePost", function (req, res) {
         if (req.body.login == users[i].login) {
             temp++;
         }
+
     }
     if (temp == 0) {
         users.push(req.body)
