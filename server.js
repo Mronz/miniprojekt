@@ -100,12 +100,12 @@ app.get("/sort", function (req, res) {
 
     if (req.query.sort == "up") {
         users.sort(function (a, b) {
-            return parseFloat(a.wiek) - parseFloat(b.wiek);
+            return parseFloat(a.age) - parseFloat(b.age);
         });
     }
     else {
         users.sort(function (a, b) {
-            return parseFloat(a.wiek) - parseFloat(b.wiek);
+            return parseFloat(a.age) - parseFloat(b.age);
         }).reverse();
     }
     context.data = users;
